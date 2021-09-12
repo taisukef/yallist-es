@@ -1,6 +1,6 @@
-# yallist
+# yallist-es
 
-Yet Another Linked List
+Yet Another Linked List (ES module version)
 
 There are many doubly-linked list implementations like it, but this
 one is mine.
@@ -8,14 +8,11 @@ one is mine.
 For when an array would be too big, and a Map can't be iterated in
 reverse order.
 
-
-[![Build Status](https://travis-ci.org/isaacs/yallist.svg?branch=master)](https://travis-ci.org/isaacs/yallist) [![Coverage Status](https://coveralls.io/repos/isaacs/yallist/badge.svg?service=github)](https://coveralls.io/github/isaacs/yallist)
-
 ## basic usage
 
 ```javascript
-var yallist = require('yallist')
-var myList = yallist.create([1, 2, 3])
+import { Yallist } from "https://taisukef.github.io/yallist-es/Yallist.js";
+const myList = Yallist.create([1, 2, 3])
 myList.push('foo')
 myList.unshift('bar')
 // of course pop() and shift() are there, too
@@ -26,16 +23,16 @@ myList.forEach(function (k) {
 myList.forEachReverse(function (k, index, list) {
   // walk the list tail to head
 })
-var myDoubledList = myList.map(function (k) {
+const myDoubledList = myList.map(function (k) {
   return k + k
 })
 // now myDoubledList contains ['barbar', 2, 4, 6, 'foofoo']
 // mapReverse is also a thing
-var myDoubledListReverse = myList.mapReverse(function (k) {
+const myDoubledListReverse = myList.mapReverse(function (k) {
   return k + k
 }) // ['foofoo', 6, 4, 2, 'barbar']
 
-var reduced = myList.reduce(function (set, entry) {
+const reduced = myList.reduce(function (set, entry) {
   set += entry
   return set
 }, 'start')

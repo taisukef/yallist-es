@@ -1,6 +1,3 @@
-'use strict'
-module.exports = Yallist
-
 Yallist.Node = Node
 Yallist.create = Yallist
 
@@ -420,7 +417,11 @@ function Node (value, prev, next, list) {
   }
 }
 
-try {
-  // add if support for Symbol.iterator is present
-  require('./iterator.js')(Yallist)
-} catch (er) {}
+Yallist.prototype[Symbol.iterator] = function* () {
+  for (let walker = this.head; walker; walker = walker.next) {
+    yield walker.value
+  }
+}
+
+export { Yallist };
+
